@@ -5,12 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.0.2 (2026-05-06)
 
-**Note:** Version bump only for package @foul11/awesome
-
-
-
-
-
-## 1.0.1 (2026-05-06)
-
-**Note:** Version bump only for package @foul11/awesome
+**Note:** Version bump only for package @foul11/awesome-lib
