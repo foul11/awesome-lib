@@ -9,19 +9,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * move from other lib ([2d42d8c](https://awesome-lib.github.com/foul11/awesome-lib/commit/2d42d8cf0378e027205e38103867724b2ab727c3))
-
-
-
-
-
-## 1.0.2 (2026-05-06)
-
-**Note:** Version bump only for package @foul11/awesome
-
-
-
-
-
-## 1.0.1 (2026-05-06)
-
-**Note:** Version bump only for package @foul11/awesome
