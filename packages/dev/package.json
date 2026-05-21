@@ -1,0 +1,34 @@
+{
+  "name": "@foul11/awesome-dev",
+  "version": "1.0.2",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "awesome-tools webpack -t lib",
+    "watch": "awesome-tools webpack -t lib -w",
+    "eslint": "eslint . --max-warnings=0",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@foul11/awesome-eslint-config": "workspace:*",
+    "@types/fresh": "^0.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "foul11",
+  "license": "MIT",
+  "packageManager": "pnpm@10.32.1",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "passWithNoTests": true
+  },
+  "dependencies": {
+    "fresh": "^0.5.2",
+    "selfsigned": "^5.5.0"
+  }
+}

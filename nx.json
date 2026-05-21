@@ -1,0 +1,30 @@
+{
+  "targetDefaults": {
+    "test": {
+      "cache": true,
+      "dependsOn": [],
+      "outputs": [
+        "{projectRoot}/coverage"
+      ]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "watch": {
+      "dependsOn": []
+    },
+    "eslint": {
+      "cache": true,
+      "dependsOn": []
+    },
+    "clean": {
+      "dependsOn": []
+    }
+  }
+}

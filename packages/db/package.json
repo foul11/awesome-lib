@@ -1,0 +1,53 @@
+{
+  "name": "@foul11/awesome-db",
+  "version": "1.0.2",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "awesome-tools webpack -t lib",
+    "watch": "awesome-tools webpack -t lib -w",
+    "eslint": "eslint . --max-warnings=0",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@foul11/awesome-eslint-config": "workspace:*",
+    "@foul11/awesome-log": "workspace:*",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/bindings": "^1.5.5",
+    "better-sqlite3": "^12.9.0",
+    "kysely": "^0.29.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": "foul11",
+  "license": "MIT",
+  "packageManager": "pnpm@10.32.1",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "passWithNoTests": true
+  },
+  "dependencies": {
+    "@foul11/awesome": "workspace:*",
+    "@foul11/sql-formatter": "^15.7.3",
+    "better-sqlite3-expert": "^1.0.2",
+    "bindings": "^1.5.0",
+    "deepmerge": "^4.3.1",
+    "type-fest": "^5.6.0",
+    "uuid": "^14.0.0"
+  },
+  "peerDependencies": {
+    "@foul11/awesome-log": "workspace:*",
+    "better-sqlite3": "^12.9.0",
+    "kysely": "^0.29.0"
+  },
+  "peerDependenciesMeta": {
+    "@foul11/awesome-log": {
+      "optional": true
+    }
+  }
+}
