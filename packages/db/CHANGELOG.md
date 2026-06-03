@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.1...v1.1.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* **awesome-db:** update logger extends ([a823d9f](https://awesome-lib.github.com/foul11/awesome-lib/commit/a823d9f29786786971754a8348e5d75c4f9f0746))
+
+
+
+
+
 ## [1.1.1](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.0...v1.1.1) (2026-06-03)
 
 **Note:** Version bump only for package @foul11/awesome-db
