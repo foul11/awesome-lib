@@ -8,6 +8,8 @@ export * from './utils';
 export * from './WebpackFileProvider';
 export * from './log';
 
+export { isWebpack } from '@foul11/awesome';
+
 export type * from './types';
 
 import { WebpackFileProvider } from './WebpackFileProvider';
@@ -21,9 +23,12 @@ import Sqlite from 'better-sqlite3';
 import bindings from 'bindings';
 import path from 'path';
 
-import type { logger_db } from './log';
+import type { extend_logger_db } from './log';
 import type { Database } from 'better-sqlite3';
 import type { CompiledQuery } from 'kysely';
+import type { LoggerContainerInferLogger } from '@foul11/awesome-log';
+
+type LoggerDB = LoggerContainerInferLogger<ReturnType<typeof extend_logger_db>, 'db'>;
 
 function create_sqlite(db_path: string): Database {
     const db = new Sqlite(db_path, {
@@ -56,7 +61,7 @@ type KyselyDB<DB> = Kysely<DB> & {
     transaction_logs: string[]
 };
 
-function format_sqlite_no_throw(log_kysely_db: typeof logger_db, query: CompiledQuery<unknown> | string) {
+function format_sqlite_no_throw(log_kysely_db: LoggerDB, query: CompiledQuery<unknown> | string) {
     const sql = typeof query === 'string'
         ? query
         : query.sql;
@@ -76,7 +81,7 @@ function format_sqlite_no_throw(log_kysely_db: typeof logger_db, query: Compiled
     }
 }
 
-function create_kysely<DB>(db: unknown, log_kysely_db: typeof logger_db) {
+function create_kysely<DB>(db: unknown, log_kysely_db: LoggerDB) {
     const db_kysely = new Kysely<DB>({
         dialect: new SqliteDialect({
             database: db as Database,
@@ -161,7 +166,7 @@ function create_kysely<DB>(db: unknown, log_kysely_db: typeof logger_db) {
     return db_kysely;
 }
 
-async function create_migrator<DB>(db_name: string, db: KyselyDB<DB>, log_kysely_db: typeof logger_db) {
+async function create_migrator<DB>(db_name: string, db: KyselyDB<DB>, log_kysely_db: LoggerDB) {
     db.in_migration = true;
     db.migration_log = [];
     db.transaction_logs = [];
@@ -209,7 +214,7 @@ async function create_migrator<DB>(db_name: string, db: KyselyDB<DB>, log_kysely
     return migrator;
 }
 
-export async function create_db<DB>(db_path: string, log_kysely: typeof logger_db) {
+export async function create_db<DB>(db_path: string, log_kysely: LoggerDB) {
     const db_name = path.parse(db_path).name;
     const db_sqlite = create_sqlite(db_path) as unknown;
     const db_log = log_kysely.child({ label5: db_name });

@@ -7,13 +7,16 @@ import { BitFields } from '../../BitFields';
 import { master_table } from '../../utils';
 import { ORM } from '../../ORM';
 
-import type { logger_access_log } from '../../log';
-
 import type { Kysely } from 'kysely';
 import type { BitFieldsUnpack } from '../../BitFields';
 import type { DBTablesByType } from '../../types';
 import type { TableSetString } from '../SetString';
 import type { TableAccessLog, TableAccessLogTiming } from './schema';
+
+import type { extend_logger_access_log } from '../../log';
+import type { LoggerContainerInferLogger } from '@foul11/awesome-log';
+
+type LoggerAccessLog = LoggerContainerInferLogger<ReturnType<typeof extend_logger_access_log>, 'access_log'>;
 
 type DefaultKeyAccessLog = 'access_log';
 interface DefaultKyselyAccessLog {
@@ -45,9 +48,9 @@ export interface AccessLogStore {
 export class AccessLogStoreDB implements AccessLogStore {
     protected readonly db: Kysely<DefaultKyselyAccessLog>;
     protected readonly domain: DefaultKeyAccessLog;
-    protected readonly logger: typeof logger_access_log | undefined;
+    protected readonly logger: LoggerAccessLog | undefined;
     
-    private constructor(db: any, domain: any, logger?: typeof logger_access_log) {
+    private constructor(db: any, domain: any, logger?: LoggerAccessLog) {
         this.db = db;
         this.domain = domain;
         this.logger = logger;
@@ -59,7 +62,7 @@ export class AccessLogStoreDB implements AccessLogStore {
     >(
         db: Kysely<DB>,
         domain: Domain,
-        logger?: typeof logger_access_log,
+        logger?: LoggerAccessLog,
     ) {
         const master = await master_table(db);
         const tables = [
