@@ -44,6 +44,7 @@ export default defineConfig([
             '@typescript-eslint/no-explicit-any': 0,
             // '@typescript-eslint/no-unsafe-call': 0,
             // '@typescript-eslint/unbound-method': 0,
+            '@typescript-eslint/no-empty-object-type': 0,
             
             '@typescript-eslint/consistent-return': 'warn',
             '@typescript-eslint/default-param-last': 'warn',

@@ -1,6 +1,6 @@
 {
     "eslint.workingDirectories": [
-        "./packages/eslint-config",
+        // "./packages/eslint-config", // Действильно ли это нужно для нормальныой работы eslint?
         // { "mode": "auto" },
     ],
 }
