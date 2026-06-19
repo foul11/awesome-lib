@@ -26,6 +26,7 @@ import path from 'path';
 import type { extend_logger_db } from './log';
 import type { Database } from 'better-sqlite3';
 import type { CompiledQuery } from 'kysely';
+import type { MigrationProvider } from 'kysely/migration';
 import type { LoggerContainerInferLogger } from '@foul11/awesome-log';
 
 type LoggerDB = LoggerContainerInferLogger<ReturnType<typeof extend_logger_db>, 'db'>;
@@ -166,13 +167,18 @@ function create_kysely<DB>(db: unknown, log_kysely_db: LoggerDB) {
     return db_kysely;
 }
 
-async function create_migrator<DB>(db_name: string, db: KyselyDB<DB>, log_kysely_db: LoggerDB) {
+async function create_migrator<DB>(
+    db_name: string,
+    db: KyselyDB<DB>,
+    log_kysely_db: LoggerDB,
+    provider: MigrationProvider = new WebpackFileProvider(db_name)
+) {
     db.in_migration = true;
     db.migration_log = [];
     db.transaction_logs = [];
     
     const migrator = new Migrator({
-        db, provider: new WebpackFileProvider(db_name),
+        db, provider,
     });
     
     async function migrateToLatest() {
@@ -214,12 +220,16 @@ async function create_migrator<DB>(db_name: string, db: KyselyDB<DB>, log_kysely
     return migrator;
 }
 
-export async function create_db<DB>(db_path: string, log_kysely: LoggerDB) {
+interface CreateDBOptions {
+    migrationProvider?: MigrationProvider
+}
+
+export async function create_db<DB>(db_path: string, log_kysely: LoggerDB, opts: CreateDBOptions = {}) {
     const db_name = path.parse(db_path).name;
     const db_sqlite = create_sqlite(db_path) as unknown;
     const db_log = log_kysely.child({ label5: db_name });
     const db = create_kysely<DB>(db_sqlite, db_log);
-    const db_migrator = await create_migrator(db_name, db, db_log);
+    const db_migrator = await create_migrator(db_name, db, db_log, opts.migrationProvider);
     
     return {
         db: db as Kysely<DB>,
