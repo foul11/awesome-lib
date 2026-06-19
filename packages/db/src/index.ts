@@ -6,6 +6,7 @@ export * from './ORM';
 export * from './SQLParser';
 export * from './utils';
 export * from './WebpackFileProvider';
+export * from './ObjectFileProvider';
 export * from './log';
 
 export { isWebpack } from '@foul11/awesome';
