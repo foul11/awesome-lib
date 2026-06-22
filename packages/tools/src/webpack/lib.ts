@@ -40,6 +40,7 @@ export default (env: any, args: WebpackParams): webpack.Configuration => {
         ],
         optimization: {
             minimize: false,
+            nodeEnv: false,
         },
         resolveLoader: {
             alias: {
