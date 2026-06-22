@@ -11,6 +11,8 @@ export function envSchema<
                     case schema instanceof z.ZodString:
                         return z.string({ error: iss => `Invalid input: Expected ${iss.expected}, received ${iss.input} or empty string` });
                     
+                    case schema instanceof z.ZodURL:
+                    case schema instanceof z.ZodDefault:
                     case schema instanceof z.ZodNumber:
                     case schema instanceof z.ZodBoolean:
                     case schema instanceof z.ZodDate:

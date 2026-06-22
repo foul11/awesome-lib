@@ -120,15 +120,6 @@ export function object_camel_to_snake<
     ) as any;
 }
 
-export function isWebpack() {
-    // @ts-expect-error check is webpack, undefined if not
-    return typeof __webpack_require__ !== 'undefined';
-}
-
-export function isDev() {
-    return !!(process.env.NODE_ENV?.toLowerCase()?.slice(0, 3) === 'dev');
-}
-
 export function isTrue(value: any, def = false) {
     if (value === true)
         return true;
@@ -142,4 +133,17 @@ export function isTrue(value: any, def = false) {
     }
     
     return def;
+}
+
+export function isWebpack() {
+    if (isTrue(process.env.FLEXILIB_DISABLE_WEBPACK)) {
+        return false;
+    }
+    
+    // @ts-expect-error check is webpack, undefined if not
+    return typeof __webpack_require__ !== 'undefined';
+}
+
+export function isDev() {
+    return !!(process.env.NODE_ENV?.toLowerCase()?.slice(0, 3) === 'dev');
 }
