@@ -1,6 +1,6 @@
 {
   "name": "@foul11/awesome-dev",
-  "version": "1.1.1",
+  "version": "1.1.7",
   "type": "module",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
