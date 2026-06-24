@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/foul11/awesome-lib/compare/v1.1.8...v1.1.9) (2026-06-24)
+
+
+### Bug Fixes
+
+* **db:** add type GetLocaleArgs ([8e153b1](https://github.com/foul11/awesome-lib/commit/8e153b1ddc7096cf1ece5ba97324c8822f801602))
+
+
+
+
+
 ## [1.1.8](https://github.com/foul11/awesome-lib/compare/v1.1.7...v1.1.8) (2026-06-24)
 
 **Note:** Version bump only for package @foul11/awesome-lib
