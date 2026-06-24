@@ -32,6 +32,12 @@ export type GetLocalesByPrefix<
         : never
     : never;
 
+export type GetLocaleArgs<
+    T extends InstanceType<typeof Localization<any, any>>,
+    L extends keyof T['locales'] & string,
+    I extends keyof T['locales'][L] & string,
+> = T['locales'][L][I] extends (...args: infer A) => any ? A[0] : {};
+
 export class Localization<
     LOCALES extends LocalizationObject,
     LOCALE_NAME extends keyof LOCALES & string,
@@ -46,11 +52,7 @@ export class Localization<
     
     get<
         LOCALE_ITEM_ID extends keyof LOCALES[LOCALE_NAME] & string,
-        LOCALE_ITEM_TYPE extends LOCALES[LOCALE_NAME][LOCALE_ITEM_ID],
-        LOCALE_ITEM_FUNC_ARGS extends
-            LOCALE_ITEM_TYPE extends (...args: any) => any
-                ? Parameters<LOCALE_ITEM_TYPE>[0]
-                : {},
+        LOCALE_ITEM_FUNC_ARGS extends GetLocaleArgs<this, LOCALE_NAME, LOCALE_ITEM_ID>,
     >(id: LOCALE_ITEM_ID, args?: LOCALE_ITEM_FUNC_ARGS, locale?: LOCALE_NAME) {
         const curr_locale = locale ?? this.locale_default;
         const str = this.locales[curr_locale][id];
