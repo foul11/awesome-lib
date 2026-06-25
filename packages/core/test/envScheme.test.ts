@@ -32,7 +32,7 @@ describe('if empty string then return null', () => {
     
     it('object one field as nullable: success', () => {
         const schema = envSchema({
-            foo: z.string().nullable(),
+            foo: z.string().optional(),
             bar: z.string(),
         });
         
@@ -42,7 +42,7 @@ describe('if empty string then return null', () => {
                 bar: 'bar',
             })
         ).toEqual({
-            foo: null,
+            foo: undefined,
             bar: 'bar',
         });
     });

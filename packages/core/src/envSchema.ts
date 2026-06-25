@@ -5,7 +5,7 @@ export function envSchema<
 >(schema: T): T extends z.core.$ZodLooseShape ? z.ZodObject<z.util.Writeable<T>, z.core.$strip> : T {
     if (schema instanceof z.ZodType) {
         return z.preprocess(
-            v => (v === '' || v === undefined ? null : v),
+            v => (v === '' ? undefined : v),
             (() => {
                 switch (true) {
                     case schema instanceof z.ZodString:
