@@ -16,6 +16,7 @@ export function envSchema<
                     case schema instanceof z.ZodNumber:
                     case schema instanceof z.ZodBoolean:
                     case schema instanceof z.ZodDate:
+                    case schema instanceof z.ZodTransform:
                         return schema;
                     
                     case schema instanceof z.ZodNullable:
@@ -39,8 +40,11 @@ export function envSchema<
                     case schema instanceof z.ZodUnion:
                         return z.union(schema.options.map(opt => envSchema(opt as any)));
                         
+                    case schema instanceof z.ZodPipe:
+                        return z.pipe(envSchema(schema.in), envSchema(schema.out));
+                        
                     default:
-                        throw new Error(`Unknown type ${schema}`);
+                        throw new Error(`Unknown type ${schema.type}`);
                 }
             })(),
         ) as any;
