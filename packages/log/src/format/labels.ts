@@ -7,7 +7,7 @@ interface FLabelsOptions {
 }
 
 export const labels = Array.from({ length: 6 }, (_, i) => `label${i || ''}`);
-export const combine_label = (p: TransformableInfo) => labels.map(l => p[l]).filter(Boolean).join(':');
+export const combine_label = (p: TransformableInfo) => labels.map(l => p[l]?.toString()).filter(Boolean).join(':');
 
 const f_labels = winston.format<FLabelsOptions>((info, opts) => {
     if (info?.label === undefined) {

@@ -118,13 +118,13 @@ export interface TransformableInfo extends logform.TransformableInfo {
 }
 
 export interface DefMeta {
-    file?: string | boolean
-    label?: string
-    label1?: string
-    label2?: string
-    label3?: string
-    label4?: string
-    label5?: string
+    file?:   string | boolean
+    label?:  string | number
+    label1?: string | number
+    label2?: string | number
+    label3?: string | number
+    label4?: string | number
+    label5?: string | number
 }
 
 export interface LoggerContainer<
