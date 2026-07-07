@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.12...v1.2.0) (2026-07-07)
+
+
+### Bug Fixes
+
+* **db:** forget export BitFields ([7d3cd10](https://awesome-lib.github.com/foul11/awesome-lib/commit/7d3cd10c716f0cb99debbbbbd6ab92909576e900))
+
+
+
+
+
 ## [1.1.12](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.11...v1.1.12) (2026-07-03)
 
 **Note:** Version bump only for package @foul11/awesome-db

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.12...v1.2.0) (2026-07-07)
+
+
+### Features
+
+* **awesome:** add concurrency_series ([2fab139](https://awesome-lib.github.com/foul11/awesome-lib/commit/2fab1391f5e65a68ed357b21fe45b8fba765e435))
+
+
+
+
+
 ## [1.1.12](https://awesome-lib.github.com/foul11/awesome-lib/compare/v1.1.11...v1.1.12) (2026-07-03)
 
 **Note:** Version bump only for package @foul11/awesome
