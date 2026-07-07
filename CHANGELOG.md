@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/foul11/awesome-lib/compare/v1.2.0...v1.2.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* **log:** change signature for labelN to stringble ([07471ae](https://github.com/foul11/awesome-lib/commit/07471ae9d9383594088f8f3897915c63ab6191ba))
+
+
+
+
+
 # [1.2.0](https://github.com/foul11/awesome-lib/compare/v1.1.12...v1.2.0) (2026-07-07)
 
 
