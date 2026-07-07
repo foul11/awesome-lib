@@ -5,6 +5,7 @@ export * from './indexer';
 export * from './ORM';
 export * from './SQLParser';
 export * from './utils';
+export * from './BitFields';
 export * from './WebpackFileProvider';
 export * from './ObjectFileProvider';
 export * from './log';
@@ -109,7 +110,7 @@ function create_kysely<DB>(db: unknown, log_kysely_db: LoggerDB) {
                     runtime: event.queryDurationMillis,
                 });
             }
-            
+            // FIXME: Если я не нахожусь в транзакции то у меня копятся запросы, которые не сбрасываются, и при любой ошибке показывает все не связанные запросы
             if (/commit|begin|rollback/.test(event.query.sql)) {
                 db_kysely.transaction_logs = [];
             }
