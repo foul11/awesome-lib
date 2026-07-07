@@ -2,6 +2,7 @@ export * from './envSchema';
 export * from './dateParser';
 export * from './EventManager';
 export * from './requireDContext';
+export * from './concurrency_series';
 
 export const regex = (function init_once() {
     const cleanup_regexp = /(?<!\\)(?:\\{2})*[\[\]]|\s+|\/\/[^\r\n]*(?:\r?\n|$)/g;
