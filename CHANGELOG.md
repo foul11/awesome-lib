@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/foul11/awesome-lib/compare/v1.2.1...v1.2.2) (2026-09-03)
+
+
+### Bug Fixes
+
+* **eslint-config:** eslint-plugin-react (-hooks) set options ([2e8cdb5](https://github.com/foul11/awesome-lib/commit/2e8cdb58d5af2da4803186f68539b0f6369f6ce7))
+
+
+
+
+
 ## [1.2.1](https://github.com/foul11/awesome-lib/compare/v1.2.0...v1.2.1) (2026-07-07)
 
 

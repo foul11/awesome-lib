@@ -1,6 +1,6 @@
 {
   "name": "@foul11/awesome-eslint-config",
-  "version": "1.1.7",
+  "version": "1.2.2",
   "type": "module",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",

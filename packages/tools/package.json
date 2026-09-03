@@ -1,6 +1,6 @@
 {
   "name": "@foul11/awesome-tools",
-  "version": "1.1.7",
+  "version": "1.2.2",
   "type": "module",
   "bin": "bin/awesome-tools.cjs",
   "scripts": {
