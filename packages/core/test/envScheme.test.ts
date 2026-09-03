@@ -1,7 +1,7 @@
 import z from 'zod';
 import { envSchema } from '../src/envSchema';
 
-describe('if empty string then return null', () => {
+describe('if empty string then return undefined', () => {
     it('object fail', () => {
         const schema = envSchema({
             foo: z.string(),
@@ -13,7 +13,7 @@ describe('if empty string then return null', () => {
                 foo: '',
                 bar: 'bar',
             })
-        )).toThrow('Invalid input: Expected string, received null or empty string');
+        )).toThrow('Invalid input: Expected string, received undefined or empty string');
     });
     
     it('object as type fail', () => {
@@ -27,10 +27,10 @@ describe('if empty string then return null', () => {
                 foo: '',
                 bar: 'bar',
             })
-        )).toThrow('Invalid input: Expected string, received null or empty string');
+        )).toThrow('Invalid input: Expected string, received undefined or empty string');
     });
     
-    it('object one field as nullable: success', () => {
+    it('object one field as optional: success', () => {
         const schema = envSchema({
             foo: z.string().optional(),
             bar: z.string(),
