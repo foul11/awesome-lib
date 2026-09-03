@@ -31,6 +31,12 @@
   "peerDependenciesMeta": {
     "@stylistic/eslint-plugin-jsx": {
       "optional": true
+    },
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
     }
   },
   "exports": {
