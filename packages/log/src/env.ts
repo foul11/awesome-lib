@@ -5,7 +5,7 @@ export const is_caller_file = () => {
 };
 
 export const is_console_caller = () => {
-    return isTrue(process.env.FLEXILIB_LOG_CONSOLE_CALLER, true);
+    return isTrue(process.env.FLEXILIB_LOG_CONSOLE_CALLER, false);
 };
 
 export const get_curr_level = (levels: Record<string, number>) => {

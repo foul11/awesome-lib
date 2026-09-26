@@ -148,3 +148,14 @@ export function isWebpack() {
 export function isDev() {
     return !!(process.env.NODE_ENV?.toLowerCase()?.slice(0, 3) === 'dev');
 }
+
+export function array_shuffle<T>(arr: T[]): T[] {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    return arr;
+}
