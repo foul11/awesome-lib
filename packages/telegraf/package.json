@@ -1,0 +1,28 @@
+{
+  "name": "@foul11/awesome-telegraf",
+  "version": "1.2.2",
+  "author": "foul11",
+  "license": "MIT",
+  "keywords": [],
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "awesome-tools webpack -t lib",
+    "watch": "awesome-tools webpack -t lib -w",
+    "eslint": "eslint . --max-warnings=0",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "telegraf": "4.14.0"
+  },
+  "devDependencies": {
+    "@foul11/awesome-eslint-config": "workspace:*"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "passWithNoTests": true
+  }
+}

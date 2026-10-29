@@ -159,3 +159,15 @@ export function array_shuffle<T>(arr: T[]): T[] {
     
     return arr;
 }
+
+export function safeAtobNode(str: string) {
+    if (!str) return '';
+    
+    try {
+        return Buffer
+            .from(str, 'base64')
+            .toString('utf8');
+    } catch (e) {
+        return '';
+    }
+}
