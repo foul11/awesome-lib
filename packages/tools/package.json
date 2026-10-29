@@ -23,6 +23,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.29.5",
     "@babel/preset-typescript": "^7.28.5",
+    "@foul11/awesome-lang": "workspace:*",
     "@foul11/webpack-obfuscator": "^3.5.3",
     "babel-loader": "^10.1.1",
     "babel-plugin-source-map-support": "^2.2.0",
@@ -34,7 +35,7 @@
     "resolve.exports": "^2.0.3",
     "terser-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.5.7",
-    "tsx": "^4.21.0",
+    "tsx": "^4.23.15",
     "webpack": "^5.106.2",
     "webpack-merge": "^6.0.1",
     "webpackbar": "^7.0.0",

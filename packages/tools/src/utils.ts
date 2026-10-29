@@ -1,8 +1,9 @@
+import fs from 'node:fs';
 import path from 'node:path';
-import { existsSync, readFileSync, statfsSync } from 'node:fs';
 
 import ts from 'typescript';
 import isPathInside from 'is-path-inside';
+import { findUpSync } from 'find-up';
 import { exports as resolveExports } from 'resolve.exports';
 
 import type { CommandModule, ArgumentsCamelCase } from 'yargs';
@@ -33,7 +34,7 @@ export function findTsConfig(dir: string) {
     return [
         path.join(dir, 'tsconfig.build.json'),
         path.join(dir, 'tsconfig.json'),
-    ].find(tsConfigPath => existsSync(tsConfigPath));
+    ].find(tsConfigPath => fs.existsSync(tsConfigPath));
 }
 
 export function readTsConfig(filename: string) {
@@ -53,7 +54,7 @@ export function readTsConfig(filename: string) {
 }
 
 export function readPackageJson(filename: string) {
-    return JSON.parse(readFileSync(filename, 'utf8'));
+    return JSON.parse(fs.readFileSync(filename, 'utf8'));
 }
 
 export function webpackFileEntries(pkgPath: string, entries: string[] | undefined, options: {
@@ -73,7 +74,7 @@ export function webpackFileEntries(pkgPath: string, entries: string[] | undefine
             [ '.ts', '.js', '.tsx', '.jsx' ]
                 .find((ext) => {
                     try {
-                        statfsSync(filename.replace(/\.[cm]?[jt]sx?$/, ext));
+                        fs.statfsSync(filename.replace(/\.[cm]?[jt]sx?$/, ext));
                     } catch {
                         return false;
                     }
@@ -132,4 +133,16 @@ export function webpackFileEntries(pkgPath: string, entries: string[] | undefine
             entry[1],
         ]),
     );
+}
+
+export function findMonorepoRoot() {
+    return findUpSync((dir) => {
+        if (fs.existsSync(path.join(dir, 'pnpm-workspace.yaml')))
+            return dir;
+        
+        if (fs.existsSync(path.join(dir, '.git')))
+            return dir;
+        
+        return undefined;
+    }, { cwd: process.cwd(), type: 'directory' });
 }

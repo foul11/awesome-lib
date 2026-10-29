@@ -99,8 +99,9 @@ async function command_webpack(options: WebpackParams) {
     }
     
     const compiler = webpack(conf);
+    
     return new Promise<void>((resolve, reject) => {
-        compiler.run((err, stats) => {
+        const callback: Parameters<InstanceType<typeof webpack.Compiler>['run']>[0] = (err, stats) => {
             if (err) {
                 console.error(err.message);
                 process.exit(2);
@@ -130,7 +131,13 @@ async function command_webpack(options: WebpackParams) {
             }
             
             return resolve();
-        });
+        };
+        
+        if (options.watch) {
+            compiler.watch({}, callback);
+        } else {
+            compiler.run(callback);
+        }
     });
 }
 

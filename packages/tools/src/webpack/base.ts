@@ -49,7 +49,6 @@ export default (env: any, args: WebpackParams): webpack.Configuration => {
     const sourceDir = path.resolve(projectJsonDir, tsConfig.options.rootDir ?? './src');
     
     return {
-        watch: args.watch,
         mode: args.mode,
         devtool: args.mode === 'development' ? 'source-map' : false,
         // target: 'node',
